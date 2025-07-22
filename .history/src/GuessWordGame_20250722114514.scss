@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins:wght@400;500&display=swap');
+
+/* Add a flex centering wrapper for the game */
+.guess-game-outer {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: none;
+}
+
+.guess-bg-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.5);
+  z-index: 1;
+}
+
+.guess-container {
+  text-align: center;
+  background: rgba(255,255,255,0.95);
+  padding: 30px;
+  border-radius: 15px;
+  width: 95%;
+  max-width: 500px;
+  box-shadow: 0px 10px 30px rgba(0,0,0,0.25);
+  color: #333;
+  position: relative;
+  z-index: 2;
+  margin: 0 auto;
+}
+
+.guess-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 30px;
+  color: #333;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.inputs {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  gap: 8px;
+}
+
+.letter-box {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #333;
+  background-color: #fafafa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 12px;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.stats {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.guess-btn {
+  padding: 12px 25px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 18px;
+  margin: 10px 5px;
+  transition: background-color 0.3s, transform 0.2s ease;
+  &:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+}
+
+.hint {
+  font-size: 18px;
+  color: #000;
+  margin-top: 10px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  background: rgba(255,255,0,0.9);
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.5);
+  display: inline-block;
+  min-width: 120px;
+  &.visible {
+    opacity: 1;
+  }
+}
+
+.keyboard {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 8px;
+  margin-top: 20px;
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
+.keyboard-btn {
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: #e0e0e0;
+  color: #333;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 8px;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.3), -2px -2px 6px rgba(255,255,255,0.8);
+  cursor: pointer;
+  transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+  &:hover:not(:disabled) {
+    background: #d0d0d0;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.4), -2px -2px 8px rgba(255,255,255,0.9);
+    transform: scale(1.05);
+  }
+  &:active:not(:disabled) {
+    background: #c0c0c0;
+    box-shadow: inset 2px 2px 6px rgba(0,0,0,0.3), inset -2px -2px 6px rgba(255,255,255,0.7);
+  }
+  &:disabled {
+    background: #b0b0b0;
+    color: #888;
+    cursor: default;
+    text-decoration: line-through;
+  }
+}
+
+@media (max-width: 600px) {
+  .guess-container {
+    padding: 15px;
+  }
+  .guess-title {
+    font-size: 24px;
+  }
+  .letter-box {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+  .guess-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+  .keyboard {
+    grid-template-columns: repeat(auto-fill, minmax(36px, 1fr));
+    gap: 8px;
+  }
+  .keyboard-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 12px;
+  }
+}
